@@ -32,7 +32,7 @@ def getSubMasks(cidr: str, subnets: list) -> list:
     getBits = lambda x: ceil(log2(x))
 
     for i, subnet in enumerate(subnets):
-        bits = getBits(subnet[1])
+        bits = getBits(subnet[1]+2)
         subnetMasks[subnet[0]] = cidrToString(int.from_bytes(metaMask)+maxAddress, 32-bits)
         maxAddress += 2**bits
 
